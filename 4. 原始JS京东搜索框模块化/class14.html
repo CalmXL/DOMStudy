@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM14</title>
+  <style type="text/css">
+    input{
+      outline: none;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    .input-wrap{
+      position: relative;
+      width: 300px;
+      height: 30px;
+      margin: 100px auto;
+    }
+
+    .keyWords{
+      position: absolute;
+      display: block;
+      left: 10px;
+      top: 5px;
+      color: #989898;
+    }
+
+    .keyWords.hide{
+      display: none;
+    }
+
+    .search-input{
+      width: 100%;
+      height: 100%;
+      border: solid 1px #424242;
+      text-indent: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="input-wrap">
+    <div id="J_autoKw" class="keyWords"></div>
+    <input type="text" 
+           id="J_search_kw" 
+           class="search-input" />
+  </div>
+  <div style="display: none;" id="recomKw">
+    ["美白独立日", "LG显示器", "洗发水", "电脑主机", "笔记本内存条"]
+  </div>
+
+  <script type="text/javascript" src="js/utils.js"></script>
+  <script type="text/javascript" src="js/search .js"></script>
+</body>
+</html>

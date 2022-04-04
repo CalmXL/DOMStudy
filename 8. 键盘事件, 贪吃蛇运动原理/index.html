@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>键盘事件 </title>
+  <style type="text/css">
+    .box{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <script src="js/utils.js"></script>
+  <script type="text/javascript">
+    /* 
+      keydown, keyup, keypress
+    */
+
+      document.onkeydown = function(e){
+
+        console.log(e);
+        // console.log(e.keyCode);
+      }
+
+    // document.onkeyup = function(){
+    //   console.log('keyup');
+    // }
+
+    document.onkeypress = function(e){
+      console.log(e)
+      //  var str = String.fromCharCode(e.charCode);
+      //  console.log(str);
+    }
+    // var box = document.getElementsByClassName('box')[0];
+
+    // document.onkeydown = function(e){
+    //   var e = e || window.event,
+    //       code = e.keyCode,
+    //       boxLeft = getStyles(box, 'left'),
+    //       boxTop = getStyles(box, 'top');
+    //   console.log(code, boxLeft, boxTop)
+    //   switch(code){
+    //     case 37: 
+    //       box.style.left = boxLeft - 5 + 'px';
+    //       break;
+    //     case 38: 
+    //       box.style.top = boxTop - 5 + 'px';
+    //       break;
+    //     case 39: 
+    //       box.style.left = boxLeft + 5 + 'px';
+    //       break;
+    //     case 40: 
+    //       box.style.top = boxTop + 5 + 'px';
+    //       break;
+    //     default: 
+    //       break;
+    //   }
+    // }
+
+
+  </script>
+</body>
+</html>

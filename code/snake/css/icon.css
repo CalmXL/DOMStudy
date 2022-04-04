@@ -1,0 +1,15 @@
+.icon{
+  height:32px;
+  width:32px;
+  background:url(../icon/drag.png)  
+  no-repeat;
+}
+.icon.head{
+  background-position:0 0;
+}
+.icon.dna{
+  background-position:0 -32px;
+}
+.icon.end{
+  background-position:0 -64px;
+}

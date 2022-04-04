@@ -1,0 +1,38 @@
+.list-hd{
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1;
+	width: 100%;
+	height: 44px;
+	background-color: orange;
+	color: #fff;
+	line-height: 44px;
+	text-align: center;
+}
+
+.container{
+	width: 100%;
+	margin-top: 44px;
+}
+
+.round{
+	display: block;
+	position: fixed;
+	bottom: 25px;
+	right: 25px;
+	width: 60px;
+	height: 60px;
+	background: orange url(../imgs/play.png) no-repeat 17px 16px/ 30px 30px;
+	border-radius: 50%;
+	opacity: .6;
+}
+
+.s-top-btn{
+	bottom: 100px;
+	background: url(../imgs/rocket.png) no-repeat 0 0/ 100% 100%;
+}    
+
+.round:hover{
+	opacity: 1;
+}

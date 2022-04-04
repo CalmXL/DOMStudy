@@ -1,0 +1,73 @@
+.game-wrap{
+  width: 640px;
+  height: 640px;
+  margin: 100px auto;
+  overflow: hidden;
+}
+
+.game-wrap .game-bg{
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-image: url(../imgs/back.webp);
+  /* background-repeat: no-repeat; */
+}
+
+.game-wrap .game-bg.show{
+  display: block;
+}
+
+.game-wrap .game-menu{
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+.game-wrap .game-menu.hide{
+  display: none;
+}
+
+.game-menu .menu-score{
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  line-height: 300px;
+  font-size: 30px;
+  color: #fff;
+}
+
+.game-menu .btn-group{
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.game-menu .btn-group .btn-start{
+  position: absolute;
+  left: 270px;
+  width: 100px;
+  height: 35px;
+  font-size: 20px;
+  border: none;
+  background-color: #ddd;
+  color: #fff;
+}
+
+.snake-wrap{
+  position: relative;
+}
+
+.snake-wrap .body{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.snake-wrap .food{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}

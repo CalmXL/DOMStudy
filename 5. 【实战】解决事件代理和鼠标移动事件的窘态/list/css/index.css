@@ -1,0 +1,96 @@
+body{
+  margin: 0;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+div,
+ul,
+li{
+  box-sizing: border-box;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+}
+
+.wrap{
+  width: 1100px;
+  height: 150px;
+  margin: 100px auto;
+}
+
+.wrap .list{
+  width: 1100px;
+  height: 150px;
+}
+
+.list .list-item {
+  position: relative;
+  float: left;
+  width: 200px;
+  height: 150px;
+  padding: 5px;
+}
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.wrap .list-item .card{
+  width: 100%;
+  height: 150px;
+  padding: 5px;
+  border-bottom: solid 1px #999;
+}
+
+.wrap .list-item.active{
+  width: 300px;
+}
+
+.wrap .list-item:hover .card{
+  box-shadow: 0 0 1px 1px #999;
+}
+
+.wrap .list-item .card a{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.wrap .list-item a .title{
+  width: 180px;
+  height: 50%;
+  color: #424242;
+}
+.wrap .list-item a .price{
+  width: 100px;
+  height: 50%;
+  font-size: 20px;
+  color: orange;
+  text-align: center;
+  line-height: 50px;
+}
+
+.wrap .list-item a .image{
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  bottom: 10px;
+  right: 10px;
+}
+
+.wrap .list-item.active a .image{
+  width: 100px;
+  height: 120px;
+}

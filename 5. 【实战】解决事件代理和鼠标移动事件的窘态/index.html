@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>课时15</title>
+  <style type="text/css">
+    .box{
+      width: 200px;
+      height: 200px;
+      background-color: orange;
+    }
+
+    .box1{
+      width: 100px;
+      height: 100px;
+      background-color: black;
+    }
+    .box2{
+      width: 100px;
+      height: 100px;
+      background-color:green;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="box1"></div>
+    <div class="box2"></div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script type="text/javascript">
+    var oBox = document.getElementsByClassName('box')[0],
+        oBox1 = document.getElementsByClassName('box1')[0],
+        oBox2 = document.getElementsByClassName('box2')[0];
+
+    // 鼠标的滑入滑出 mouseover mouseout
+    // 移出子元素 父元素的移出事件也会被触发
+    oBox.onmouseover = function(){
+      console.log('box');
+    }
+    oBox.onmouseout = function(){
+      console.log('box out');
+    }
+
+    oBox1.onmouseover = function(){
+      console.log('box1');
+    }
+
+    oBox1.onmouseout = function(){
+      console.log('box1 out');
+    }
+    oBox2.onmouseover = function(){
+      console.log('box2');
+    }
+
+    oBox2.onmouseout = function(){
+      console.log('box2 out');
+    }
+
+   //  mouseenter mouseleave
+    // oBox.onmouseenter = function(){
+    //   console.log('box');
+    // }
+    // oBox.onmouseleave = function(){
+    //   console.log('box leave');
+    // }
+
+    // oBox1.onmouseenter = function(){
+    //   console.log('box1');
+    // }
+    // oBox1.onmouseleave = function(){
+    //   console.log('box1 leave');
+    // }
+
+    // oBox2.onmouseenter = function(){
+    //   console.log('box2');
+    // }
+    // oBox2.onmouseleave = function(){
+    //   console.log('box2 leave');
+    // }
+
+
+
+
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+.wrap{
+  width: 500px;
+  height: 500px;
+  margin: 100px auto;
+  box-shadow: 0 0 5px #999;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.list-hd{
+  position: relative;
+  width: 100%;
+  height: 44px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  line-height: 44px;
+}
+
+.list-hd .fa-plus{
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  width: 15px;
+  height: 15px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.input-wrap{
+  position: relative;
+  display: none;
+  width: 500px;
+  height: 44px;
+  border-bottom: solid 1px #999;
+}
+
+.input-wrap .input-bd{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 410px;
+  height: 100%;
+  border: none;
+  padding: 5px 5px 5px 10px;
+}
+
+.input-wrap .input-bd input{
+  width: 100%;
+  height: 100%;
+  border: solid 1px #ddd;
+}
+
+.input-wrap .button-bd{
+  height: 100%;
+  margin-left: 410px;
+  border: none;
+  padding: 5px 10px 5px 5px;
+}
+
+.input-wrap .button-bd button{
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: #ddd;
+  color: #fff;
+}
+
+.list-wrap{
+  width: 100%;
+  height: 456px;
+  overflow: auto;
+}
+
+.list-wrap .item{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border: solid 1px orange;
+}
+
+.list-wrap .item:nth-child(odd),
+.list-wrap .item:hover{
+  background: #ddd;
+}
+
+
+.list-wrap .item .content{
+  position:absolute;
+  left: 0;
+  top: 0;
+  width: 440px;
+  height: 100%;
+  overflow: hidden;
+  line-height: 50px;
+}
+
+.list-wrap .item .btn-group{
+  height: 100%;
+  margin-left: 440px;
+  line-height: 50px;
+}
+
+.list-wrap .item .btn-group .fa-edit{
+  margin-right: 10px;
+  color: green;
+}
+
+.list-wrap .item .btn-group .fa-times{
+  color: red;
+}
+
+.list-wrap .item.active{
+  background-color: #dff0d8;
+}
+

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>贪吃蛇</title>
+  <style type="text/css">
+    .wrap{
+      position: relative;
+      width: 500px;
+      height: 500px;
+      margin: 50px auto;
+      background-color: #000;
+      overflow: hidden;
+    }
+    .round{
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: green;
+    }
+    .round.head{
+      background-color: red;
+    }
+
+    button{
+      position: fixed;
+      left: 500px;
+    }
+    
+    .food{
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: yellow;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap"></div>
+  <button>停止游戏</button>
+  <script type="text/javascript" src="js/utils.js"></script>
+  <script type="text/javascript">
+    window.onload = function(){
+      init();
+    }
+
+    function init(){
+      initGame();
+    }
+
+    var initGame = (function(){
+      var wrap = document.getElementsByClassName('wrap')[0],
+          button = document.getElementsByTagName('button')[0],
+          dir = 'DOWN',
+          wrapWidth = getStyles(wrap, 'width'),
+          wrapHeight = getStyles(wrap, 'height'),
+          t;
+      var Snake = function(){
+        this.bodyArr = [
+          {x: 0, y: 0},
+          {x: 0, y: 20},
+          {x: 0, y: 40},
+          {x: 0, y: 60},
+          {x: 0, y: 80},
+          {x: 0, y: 100},
+        ];
+      }
+
+      Snake.prototype = {
+        init: function(){
+          this.bindEvent();
+          this.initSnake();
+          this.createFood();
+          this.run();
+        },
+
+        bindEvent: function(){
+          var _self = this;
+          addEvent(document, 'keydown', function(){
+              _self.changeDir();
+          });
+
+          addEvent(button, 'click', function(){
+            clearInterval(t);
+          })
+        },
+
+        initSnake: function(){
+          var arr = this.bodyArr,
+              len = arr.length,
+              frag = document.createDocumentFragment(),
+              item;
+          
+          for(var i = 0; i < len; i++){
+            item = arr[i];
+
+            var round = document.createElement('i');
+            round.className = i === len - 1 ? 'round head'
+                                            : 'round';
+            round.style.left = item.x + 'px';
+            round.style.top = item.y + 'px';
+
+            frag.appendChild(round);
+          }
+          wrap.appendChild(frag);
+        },
+
+        run: function(){
+          var _self = this;
+          t = setInterval(function(){
+            _self.move();
+          }, 300);
+        },
+
+        move: function(){
+          var arr = this.bodyArr,
+              len = arr.length;
+
+          for(var i = 0; i < len; i++){
+            if(i === len - 1){
+              this.setHeadXY(arr);
+            }else{
+              arr[i].x = arr[i + 1].x;
+              arr[i].y = arr[i + 1].y;
+            }
+          }
+          this.eatFood(arr);
+          this.hadInBody(arr);
+          this.removeSnake();
+          this.initSnake();
+
+        },
+
+        setHeadXY: function(arr){
+          var head = arr[arr.length - 1],
+              round = wrap.getElementsByClassName('round')[0],
+              roundWidth = getStyles(round, 'width'),
+              roundHeight = getStyles(round, 'height'),
+              maxX = wrapWidth - roundWidth,
+              maxY = wrapHeight - roundHeight;
+
+          switch(dir){
+            case 'LEFT':
+              if(head.x <= 0){
+                head.x = maxX;
+              }else{
+                head.x -= roundWidth; 
+              }
+              break;
+            case 'RIGHT':
+              if(head.x >= maxX){
+                head.x = 0;
+              }else{
+                head.x += roundWidth;
+              }
+              break;
+            case 'UP':
+              if(head.y <= 0){
+                head.y = maxY;
+              }else{
+                head.y -= roundHeight;
+              }
+              break;
+            case 'DOWN':
+              if(head.y >= maxY){
+                head.y = 0;
+              }else{
+                head.y += roundHeight;
+              }
+              break;
+            default:
+              break;
+          }
+        },
+
+        hadInBody: function(arr){
+          var _self = this,
+              len = arr.length,
+              headX = arr[len - 1].x,
+              headY = arr[len - 1].y,
+              item;
+
+          for(var i = 0; i < len - 2; i++){
+            item = arr[i];
+            if(headX === item.x && headY === item.y){
+              setTimeout(function(){
+                clearInterval(t);
+                _self.removeSnake();
+                _self.removeFood();
+                alert('您已经死亡!!!');
+              }, 100);
+            }
+          }          
+        },
+
+        removeSnake: function(){
+          var bodys = document.getElementsByClassName('round');
+          while(bodys.length > 0){
+            bodys[0].remove();
+          }
+        },
+
+        changeDir: function(e){
+          var _self = this;
+              e = e || window.event,
+              code = e.keyCode;
+          var t1 = setTimeout(function(){
+            _self.setDir(code);
+            t1 = null;
+          }, 100);
+        },
+
+        setDir: function(code){
+          switch(code){
+            case 37: 
+              if(dir !== 'LEFT' && dir !== 'RIGHT'){
+                dir = 'LEFT';
+              }
+              break;
+            case 39: 
+              if(dir !== 'LEFT' && dir !== 'RIGHT'){
+                dir = 'RIGHT';
+              }
+              break;
+            case 38: 
+              if(dir !== 'UP' && dir !== 'DOWN'){
+                dir = 'UP';
+              }
+              break;
+            case 40: 
+              if(dir !== 'UP' && dir !== 'DOWN'){
+                dir = 'DOWN';
+              }
+              break;
+            default: 
+              break;
+          }
+        },
+
+        createFood: function(){
+          var i = document.createElement('i'),
+              foodLeft = this.randomXY(wrapWidth),
+              foodTop = this.randomXY(wrapHeight);
+
+          i.className = 'food';
+          i.style.left = foodLeft + 'px';
+          i.style.top = foodTop + 'px';
+          
+          wrap.appendChild(i);
+        },
+
+        randomXY: function(widthOrHeight){
+          return Math.floor(Math.random() * (widthOrHeight / 20)) * 20;
+        },
+
+        removeFood: function(){
+          var food = document.getElementsByClassName('food')[0];
+          food.remove();
+        },
+
+        eatFood: function(arr){
+          var head = arr[arr.length - 1],
+              food = document.getElementsByClassName('food')[0],
+              foodLeft = getStyles(food, 'left'),
+              foodTop = getStyles(food, 'top');
+
+          if(head.x === foodLeft && head.y === foodTop){
+            this.removeFood();
+            this.createFood();
+            this.snakeAdd(arr);
+          }
+        },
+
+        snakeAdd: function(arr){
+          var len = arr.length,
+              lastOne = arr[0],
+              lastTwo = arr[1],
+              item = {};
+
+            
+          if(lastOne.x === lastTwo.x){
+            item.x = lastOne.x;
+            if(lastOne.y > lastTwo.y){
+              item.y = lastOne.y + 20;
+            }else if(lastOne.y < lastTwo.y){
+              item.y = lastOne.y - 20;
+            }
+          }else if(lastOne.y === lastTwo.y){
+            item.y = lastOne.y;
+            if(lastOne.x > lastTwo.x){
+              item.x = lastOne.x - 20;
+            }else if(lastOne.x < lastTwo.x){
+              item.x = lastOne.x + 20;
+            }
+          }
+
+          arr.unshift(item);
+        }
+        
+      }
+
+      return new Snake().init();
+    });
+
+  </script>
+</body>
+</html>

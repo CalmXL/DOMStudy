@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/font-awesome.css" />
+  <link rel="stylesheet" href="css/common.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <title>Todolist</title>
+</head>
+<body>
+  <div class="wrap" data-config='{
+    "plusBtn": "j-plus-btn",
+    "inputArea": "input-wrap",
+    "addBtn": "j-add-item",
+    "list": "item-list",
+    "itemClass": "item"
+  }'>
+    <div class="list-hd">
+      <h2>Todolist</h2>
+      <a href="javascript:;" class="j-plus-btn fa fa-plus">
+      </a>
+    </div>
+    <div class="input-wrap">
+      <div class="input-bd">
+        <input type="text" class="j-item-content"/>
+      </div>
+      <div class="button-bd">
+        <button class="j-add-item">增加项目</button>
+      </div>
+    </div>
+    <div class="list-wrap">
+      <ul class="item-list"></ul>
+    </div>
+  </div>
+  <script type="text/tpl" id="itemTpl">
+      <p>{{text}}</p>
+      <div class="btn-group">
+        <a href="javascript:;" class="fa fa-edit"></a>
+        <a href="javascript:;" class="fa fa-time"></a>
+      </div>
+  </script>
+  <script type="text/javascript" src="js/utils.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
